@@ -1,0 +1,150 @@
+@import "./config";
+
+.search {
+  margin: 1rem;
+  height: 5vh;
+  width: 16rem;
+  border-bottom: 2px solid black;
+
+  .inputBox {
+    padding-left: 0.5rem;
+    width: 14.2rem;
+    @include outline;
+  }
+
+  .searchBtn {
+    @include outline;
+    cursor: pointer;
+
+  }
+}
+
+.container {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  height: calc(100vh - 14vh);
+  align-items: center;
+  justify-content: center;
+
+  .windInfo{  
+    justify-self: end;
+    grid-column: 3/3;
+    grid-row: 1/2;
+    .sunrise_sunset{
+      display: flex;
+      width: 16rem;
+      padding: 1rem;
+      justify-content: space-evenly;
+      background-color: rgba(139, 0, 139, 0.479);
+      .sun{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+      }
+
+      .image{
+        width:4rem;
+      }
+    }
+    
+
+
+    .wind{
+      width: 16rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: indianred;
+      margin: 1rem 0;
+      padding: 1.2rem;
+      height: 2rem;
+    }
+  }
+
+
+  .importantInfo {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 16rem;
+    height: 16rem;
+    justify-content: space-between;
+
+    .country {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16rem;
+      height: 2.5rem;
+      padding: 1rem;
+      background-color: bisque;
+
+      .countryName {
+        margin-right: 1rem;
+      }
+    }
+
+    .dateTime {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16rem;
+      height: 1rem;
+      padding: 1rem;
+      background-color: aqua;
+
+      &__date {
+        margin-right: 1rem;
+      }
+    }
+
+    .weather {
+      background-color: rgb(236, 156, 156);
+      width: 16rem;
+      height: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+
+      &__info {
+        margin-right: 1rem;
+      }
+    }
+
+    .maintemperature {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 16rem;
+      height: 5.5rem;
+      background-color: pink;
+    }
+  }
+
+  .temperature_container {
+    grid-column: 1/4;
+    grid-row: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .temperature {
+      background-color: rgba(0, 128, 0, 0.671);
+      width: 9rem;
+      height: 4rem;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

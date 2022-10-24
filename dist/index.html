@@ -1,21 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>weather app</title>
-    <script src="main.js" defer></script>
-  </head>
-  <body>
-    <main>
-      <div class="flex items-center justify-center wrapper" id="wrapper">
-        <div class="input">
-          <label for="cityName">Enter You City Name</label>
-          <input type="text" id="cityName" />
-          <button id="cityNameBtn" class="bg-sky-500/100 hover:bg-cyan-600 ">poop</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>weather app</title>
+  <script src="main.js" defer></script>
+  <script src="https://kit.fontawesome.com/8c4f2e9238.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+  <main>
+    <div class="wrapper" id="wrapper">
+      <div class="search">
+        <input type="text" id="cityName" class="inputBox" placeholder="city name" />
+        <button id="cityNameBtn" class="searchBtn"><i class="fa-solid fa-magnifying-glass "></i></button>
+      </div>
+      <div class="container">
+        <div class="windInfo">
+         <div class="sunrise_sunset">
+            <div class="sun">
+              <div class="sunriseLogo"><img src="./images/sunrise.png" alt="sunrise" class="image"></div>
+              <div class="sunriseTime" id="sunriseTime"></div>
+            </div>
+            <div class="sun">
+              <div class="sunsetLogo"><img src="./images/sunset.png" alt="sunset" class="image"></div>
+              <div class="sunsetTime" id="sunsetTime"></div>
+            </div>
+         </div>
+         <div class="wind">
+          <h4>Wind</h4>
+          <div class="windSpeed" id="wind"></div>
+         </div>
+         <div class="wind">
+          <h4>Deg</h4>
+          <div class="windDeg" id="deg">9-9</div>
+         </div>
+        </div>
+        <div class="importantInfo">
+          <div class="country">
+            <div class="countryName" id="country"></div>
+            <div class="city" id='city'></div>
+          </div>
+          <div class="dateTime">
+            <div class="dateTime__date" id="date"></div>
+            <div class="dateTime__time" id="time"></div>
+          </div>
+          <div class="weather">
+            <div class="weather__info" id="weather"></div>
+            <div class="weather__cloud" id="cloud"></div>
+            <div class="img" id="img"></div>
+          </div>
+          <div class="maintemperature">
+            <h1>Temperature</h1>
+            <div class="mainTemp" id="temperature"></div>
+          </div>
+        </div>
+        <div class="temperature_container">
+          <div class="temperature">
+            <h4>Max Temperature</h4>
+            <div class="temp" id="maxTemperature"></div>
+          </div>
+          <div class="temperature">
+            <h4>Min Temperature</h4>
+            <div class="temp" id="minTemperature"></div>
+          </div>
+          <div class="temperature">
+            <h4>Pressure</h4>
+            <div class="temp" id="pressure"></div>
+          </div>
+          <div class="temperature">
+            <h4>Humidity</h4>
+            <div class="temp" id="humidity"></div>
+          </div>
+          <div class="temperature">
+            <h4>Feels like</h4>
+            <div class="temp" id="feelLike"></div>
+          </div>
+          <div class="temperature">
+            <h4>Visibility</h4>
+            <div class="temp" id="visibility"></div>
+          </div>
         </div>
       </div>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
+
 </html>
