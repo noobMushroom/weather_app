@@ -1,4 +1,4 @@
-import { doc } from "prettier";
+import { bgHandler } from './background'
 
 async function weather(cityName) {
 	const key = "6c2338a6c10581189e98989a14fa4b65";
@@ -8,6 +8,8 @@ async function weather(cityName) {
 		const response = await weather.json()
 		console.log(response)
 		showWeather(response)
+		bgHandler(response)
+		
 	} catch (error) {
 		console.log(error)
 	}
@@ -28,25 +30,25 @@ function showWeather(data) {
 	const feelsLike = document.getElementById("feelLike");
 	feelsLike.innerHTML = `${data.main.feels_like}&deg;C`
 
-	const visibility= document.getElementById("visibility")
-	visibility.innerHTML=data.visibility
+	const visibility = document.getElementById("visibility")
+	visibility.innerHTML = data.visibility
 
-	const country=document.getElementById('country')
-	country.innerHTML=`<h2>${data.sys.country}</h2>`
-	const city=document.getElementById("city");
-	city.innerHTML=data.name
+	const country = document.getElementById('country')
+	country.innerHTML = `<h2>${data.sys.country}</h2>`
+	const city = document.getElementById("city");
+	city.innerHTML = data.name
 
-	const sunrise =document.getElementById('sunriseTime')
-	sunrise.innerHTML=sunsetSunrise(data.sys.sunrise, data.timezone)
+	const sunrise = document.getElementById('sunriseTime')
+	sunrise.innerHTML = sunsetSunrise(data.sys.sunrise, data.timezone)
 
-	const sunset=document.getElementById("sunsetTime")
-	sunset.innerHTML=sunsetSunrise(data.sys.sunset, data.timezone)
+	const sunset = document.getElementById("sunsetTime")
+	sunset.innerHTML = sunsetSunrise(data.sys.sunset, data.timezone)
 
-	const windSpeed =document.getElementById("wind")
-	windSpeed.innerHTML=data.wind.speed
+	const windSpeed = document.getElementById("wind")
+	windSpeed.innerHTML = data.wind.speed
 
-	const deg=document.getElementById("deg")
-	deg.innerHTML=data.wind.deg
+	const deg = document.getElementById("deg")
+	deg.innerHTML = data.wind.deg
 
 	data.weather.forEach(element => {
 		const clouds = document.getElementById("weather");
@@ -71,22 +73,22 @@ function padTo2Digits(num) {
 
 const dateTime = (timeOffset) => {
 	const days = ['sun', 'Mon', 'Tue', 'Wed', 'Thurs', "Fri", "Sat"]
-	const months=['Jan', 'Feb', "Mar", "Apr", "May", "June", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
-	let cityTime = new Date(dateCalculator(new Date(),timeOffset))
+	const months = ['Jan', 'Feb', "Mar", "Apr", "May", "June", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+	let cityTime = new Date(dateCalculator(new Date(), timeOffset))
 
 	const day = cityTime.getDay()
 
 	const todayDay = padTo2Digits(cityTime.getDate());
 
-	const timeDiv=document.getElementById('time');
-	timeDiv.innerHTML=`${days[day]} ${timeCalculator(cityTime)}`
+	const timeDiv = document.getElementById('time');
+	timeDiv.innerHTML = `${days[day]} ${timeCalculator(cityTime)}`
 
-	const dateDiv=document.getElementById('date');
-	dateDiv.innerHTML=`${months[cityTime.getMonth()]}-${cityTime.getFullYear()}-${todayDay}`
+	const dateDiv = document.getElementById('date');
+	dateDiv.innerHTML = `${months[cityTime.getMonth()]}-${cityTime.getFullYear()}-${todayDay}`
 }
 
 
-const dateCalculator=(date,time)=>{
+const dateCalculator = (date, time) => {
 	let today = date
 	let localTime = today.getTime()
 	let localOffset = today.getTimezoneOffset() * 60000
@@ -96,7 +98,7 @@ const dateCalculator=(date,time)=>{
 	return currentTime
 }
 
-const timeCalculator=(date)=>{
+const timeCalculator = (date) => {
 	const hours = date.getHours();
 	const minutes = date.getMinutes();
 	const time = `${padTo2Digits(hours)}:${padTo2Digits(minutes)}`;
@@ -104,12 +106,12 @@ const timeCalculator=(date)=>{
 	return time;
 }
 
-const sunsetSunrise=(date, offset)=>{	
-	let today=dateCalculator(new Date(date * 1000), offset ) ;
-	let newDate=new Date(today)
-	let time=timeCalculator(newDate)
+const sunsetSunrise = (date, offset) => {
+	let today = dateCalculator(new Date(date * 1000), offset);
+	let newDate = new Date(today)
+	let time = timeCalculator(newDate)
 
 	return time
 }
 
-export { weather };
+export { weather, timeCalculator, dateCalculator, sunsetSunrise };

@@ -1,16 +1,15 @@
 import _ from "lodash";
 import "../styles/style.scss";
 import { weather } from "./weather";
-import {background} from './background'
+import { bgHandler } from './background'
 
 function main() {
-  background()
-  weather('london')
+  weather('tokyo')
   const cityName = document.getElementById("cityName");
   const btn = document.getElementById("cityNameBtn");
   btn.addEventListener("click", () => {
     try {
-      if (cityName.value===""){
+      if (cityName.value === "") {
         throw new Error("name required");
       }
       weather(cityName.value);
