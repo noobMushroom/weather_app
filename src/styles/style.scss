@@ -1,24 +1,56 @@
 @import "./config";
 
+.head{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .navBar {
+    width: 100%;
+    margin-top: 0.3rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.692);
+    .search {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 1rem;
+      height: 5vh;
+      width: 16rem;
+      .input{
+        display: flex;
+        flex-direction: column;
+        .inputBox {
+          // position: absolute;
+          // top: 50%;
+          // left: 0%;
 
-.search {
-  margin: 1rem;
-  height: 5vh;
-  width: 16rem;
-  border-bottom: 2px solid black;
+          padding-left: 0.5rem;
+          width: 14.2rem;
+          @include outline;
+          border-bottom: 2px solid black;
+        }
+        .warning{
+          margin-top: 0.2rem;
+          color:rgb(129, 9, 9);
+          font-size: 18px;
+        }
 
-  .inputBox {
-    padding-left: 0.5rem;
-    width: 14.2rem;
-    @include outline;
-  }
-
-  .searchBtn {
-    @include outline;
-    cursor: pointer;
-
+      }
+  
+  
+      .searchBtn {
+        @include outline;
+        cursor: pointer;
+  
+      }
+    }
   }
 }
+
+
 
 .container {
   padding: 0 1rem;
@@ -29,31 +61,33 @@
   align-items: center;
   justify-content: center;
 
-  .windInfo{  
+  .windInfo {
     justify-self: end;
     grid-column: 3/3;
     grid-row: 1/2;
-    .sunrise_sunset{
+
+    .sunrise_sunset {
       display: flex;
       width: 16rem;
       padding: 1rem;
       justify-content: space-evenly;
       background-color: rgba(139, 0, 139, 0.479);
-      .sun{
+
+      .sun {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content:center;
+        justify-content: center;
       }
 
-      .image{
-        width:4rem;
+      .image {
+        width: 4rem;
       }
     }
-    
 
 
-    .wind{
+
+    .wind {
       width: 16rem;
       display: flex;
       flex-direction: column;

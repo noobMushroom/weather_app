@@ -9,6 +9,7 @@ async function background(name) {
 }
 
 const handler = (photos) => {
+    clearInterval(photoShow)
     let photoArray = photos.results
     let i = 1
     let defaultPic = photoArray[0]
