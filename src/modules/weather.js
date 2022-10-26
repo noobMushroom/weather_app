@@ -12,6 +12,7 @@ async function weather(cityName) {
 		
 	} catch (error) {
 		console.log(error)
+		alert(error)
 	}
 
 }
