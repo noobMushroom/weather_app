@@ -6,7 +6,6 @@ async function weather(cityName) {
 		const weather = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${key}&units=metric`, { mode: "cors" })
 		if (weather.ok === false) throw new Error("city not found")
 		const response = await weather.json()
-		console.log(response)
 		showWeather(response)
 		bgHandler(response)
 		
