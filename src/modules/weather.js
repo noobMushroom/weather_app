@@ -4,14 +4,14 @@ async function weather(cityName) {
 	const key = "6c2338a6c10581189e98989a14fa4b65";
 	try {
 		const weather = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${key}&units=metric`, { mode: "cors" })
-		if (weather.ok === false) throw new Error("city not found")
+		if (weather.ok === false) throw new Error(`No match found for ${cityName}`)
 		const response = await weather.json()
 		showWeather(response)
 		bgHandler(response)
-		
+		clearError()
+
 	} catch (error) {
-		console.log(error)
-		alert(error)
+		warning(error)
 	}
 
 }
@@ -114,4 +114,14 @@ const sunsetSunrise = (date, offset) => {
 	return time
 }
 
-export { weather, timeCalculator, dateCalculator, sunsetSunrise };
+const warning = (error) => {
+	const warningDiv = document.getElementById('warning')
+	warningDiv.innerHTML = `*${error}`
+}
+
+const clearError = () => {
+	const warningDiv = document.getElementById('warning')
+	warningDiv.innerHTML = ''
+}
+
+export { weather, timeCalculator, dateCalculator, sunsetSunrise, warning, clearError};

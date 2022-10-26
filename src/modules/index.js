@@ -1,6 +1,6 @@
 import _ from "lodash";
 import "../styles/style.scss";
-import { weather } from "./weather";
+import { weather, warning, clearError } from "./weather";
 
 (function main() {
   weather('tokyo')
@@ -9,12 +9,14 @@ import { weather } from "./weather";
   btn.addEventListener("click", () => {
     try {
       if (cityName.value === "") {
+        clearError()
         throw new Error("name required");
       }
       weather(cityName.value);
     } catch (error) {
-      console.log(error);
+      warning(error)
     }
+    cityName.value=''
   });
 })()
 
