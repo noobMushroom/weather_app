@@ -3,9 +3,15 @@ import "../styles/style.scss";
 import { weather, warning, clearError } from "./weather";
 
 (function main() {
-  weather('tokyo')
+  weather('Santa Barbara')
   const cityName = document.getElementById("cityName");
   const btn = document.getElementById("cityNameBtn");
+
+  cityName.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      btn.click();
+    }
+  });
   btn.addEventListener("click", () => {
     try {
       if (cityName.value === "") {
@@ -16,7 +22,7 @@ import { weather, warning, clearError } from "./weather";
     } catch (error) {
       warning(error)
     }
-    cityName.value=''
+    cityName.value = ''
   });
 })()
 
@@ -29,9 +35,9 @@ function checkTime(i) {
 (function startTime() {
   setTimeout(startTime, 500)
   let today = new Date(),
-      h = today.getHours(),
-      m = today.getMinutes(),
-      s = today.getSeconds();
+    h = today.getHours(),
+    m = today.getMinutes(),
+    s = today.getSeconds();
   m = checkTime(m);
   s = checkTime(s);
   let clock = document.getElementById('clock')

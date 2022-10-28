@@ -24,14 +24,14 @@ function showWeather(data) {
 	const temperature = document.getElementById("temperature");
 	temperature.innerHTML = `${data.main.temp}&deg;C`
 	const pressure = document.getElementById('pressure')
-	pressure.innerHTML = (data.main.pressure)
+	pressure.innerHTML = `${(data.main.pressure)} mb`
 	const humidity = document.getElementById('humidity')
-	humidity.innerHTML = (data.main.humidity);
+	humidity.innerHTML = `${(data.main.humidity)}%`;
 	const feelsLike = document.getElementById("feelLike");
 	feelsLike.innerHTML = `${data.main.feels_like}&deg;C`
 
 	const visibility = document.getElementById("visibility")
-	visibility.innerHTML = data.visibility
+	visibility.innerHTML = `${data.visibility/1000} Km`
 
 	const country = document.getElementById('country')
 	country.innerHTML = `<h2>${data.sys.country}</h2>`
@@ -45,10 +45,10 @@ function showWeather(data) {
 	sunset.innerHTML = sunsetSunrise(data.sys.sunset, data.timezone)
 
 	const windSpeed = document.getElementById("wind")
-	windSpeed.innerHTML = data.wind.speed
+	windSpeed.innerHTML = `${data.wind.speed} Km/h`
 
 	const deg = document.getElementById("deg")
-	deg.innerHTML = data.wind.deg
+	deg.innerHTML = `${data.wind.deg}&deg;` 
 
 	data.weather.forEach(element => {
 		const clouds = document.getElementById("weather");

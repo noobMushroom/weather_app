@@ -52,7 +52,6 @@ export const bgHandler = (data) => {
     const time = timeCalculator(today)
     const sunrise = sunsetSunrise(data.sys.sunrise, data.timezone)
     const sunset = sunsetSunrise(data.sys.sunset, data.timezone)
-    console.log('sunrise vs sunset', sunrise === time)
     if (sunrise < time && time < sunset) {
         dayBgHandler(time, data)
     } else {
@@ -62,11 +61,11 @@ export const bgHandler = (data) => {
 
 const dayBgHandler = (time, data) => {
     if (time < "12:00") {
-        tempHandler(data, 'morning')
+        tempHandler(data, 'sunrise')
     } else if (time > '12:00' && time < "5:00") {
         tempHandler(data, "noon")
     } else if (time > "5:00") {
-        tempHandler(data, "evening")
+        tempHandler(data, "sunset")
     }
 }
 
